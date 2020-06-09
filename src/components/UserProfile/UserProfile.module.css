@@ -1,0 +1,29 @@
+.profile {
+    padding-top: 15px;
+    flex: 0 0 35%;
+    font-size: 20px;
+}
+
+.p {
+    margin: 0;
+    font-weight: bold;
+    color: #0039d4;
+}
+
+.button {
+    display: block;
+    margin: 0 auto;
+    height: 25px;
+    background-color: #0039d4;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: linear 200ms background-color;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #0b48f0;
+}

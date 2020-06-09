@@ -1,0 +1,45 @@
+.list {
+    padding: 0;
+}
+
+.item {
+    display: flex;
+    list-style: none;
+
+    justify-content: space-between;
+    font-size: 25px;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.wrap p {
+    margin: 0;
+    min-width: 200px;
+    display: block;
+}
+
+.item button {
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    background-color: #cc1212;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: linear 200ms transform, linear 200ms background-color;
+}
+
+.item button:hover,
+.item button:focus {
+    background-color: #e61212;
+    transform: scale(1.05);
+}

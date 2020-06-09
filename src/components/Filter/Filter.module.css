@@ -1,0 +1,15 @@
+.filter {
+    margin-bottom: 25px;
+}
+
+.filter input {
+    padding-left: 30px;
+    width: 450px;
+    height: 30px;
+}
+
+.filter,
+.filter input::placeholder {
+    font-size: 18px;
+    line-height: 22px;
+}

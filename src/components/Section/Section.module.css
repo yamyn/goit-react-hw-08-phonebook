@@ -1,0 +1,11 @@
+.titleSection {
+    outline: #fff groove 1px;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    box-shadow: 0 0 5px #24242480;
+}
+
+.titleSection:not(:last-child) {
+    margin-bottom: 50px;
+}
