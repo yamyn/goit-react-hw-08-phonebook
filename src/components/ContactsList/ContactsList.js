@@ -4,7 +4,7 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import { list, item } from './ContactsList.module.css';
 import ContactsListItem from './ContactsListItem';
-import Notification from '../Notification/Notification';
+import Notification from '../shared/Notification/Notification';
 import slideTransition from '../../transitions/slide.module.css';
 
 export default class ContactsList extends Component {

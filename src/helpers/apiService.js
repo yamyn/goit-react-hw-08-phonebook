@@ -5,6 +5,8 @@ export const fetch = axios.create({
     timeout: 10000,
 });
 
-export const setAuthToken = token => {
-    return { headers: { Authorization: `Bearer ${token}` } };
+export const setAuthToken = (token, headers) => {
+    const auth = { Authorization: `Bearer ${token}` };
+    const newHeaders = headers ? { ...auth, ...headers } : auth;
+    return { headers: newHeaders };
 };

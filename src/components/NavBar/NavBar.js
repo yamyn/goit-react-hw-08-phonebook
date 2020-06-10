@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-// import NavItem from './NavItem';
-
 import { list, navigation, link, item } from './NavBar.module.css';
 
 const ativeStyle = {
@@ -11,40 +9,59 @@ const ativeStyle = {
     fontWeight: 'bold',
 };
 
-const NavBar = () => (
+const NavBar = ({ auth }) => (
     <nav className={navigation}>
         <ul className={list}>
             <li className={item}>
-                <NavLink
-                    to="/register"
-                    exact
-                    activeStyle={ativeStyle}
-                    className={link}
-                >
-                    Sign up
-                </NavLink>
-            </li>
-            <li className={item}>
-                <NavLink
-                    to="/login"
-                    exact
-                    activeStyle={ativeStyle}
-                    className={link}
-                >
-                    Login
-                </NavLink>
-            </li>
-            <li className={item}>
                 <NavLink to="/" exact activeStyle={ativeStyle} className={link}>
-                    Contacts
+                    Home
                 </NavLink>
             </li>
+
+            {auth && (
+                <>
+                    <li className={item}>
+                        <NavLink
+                            to="/contacts"
+                            exact
+                            activeStyle={ativeStyle}
+                            className={link}
+                        >
+                            Contacts
+                        </NavLink>
+                    </li>
+                </>
+            )}
+            {!auth && (
+                <>
+                    <li className={item}>
+                        <NavLink
+                            to="/login"
+                            exact
+                            activeStyle={ativeStyle}
+                            className={link}
+                        >
+                            Login
+                        </NavLink>
+                    </li>
+                    <li className={item}>
+                        <NavLink
+                            to="/register"
+                            exact
+                            activeStyle={ativeStyle}
+                            className={link}
+                        >
+                            Sign up
+                        </NavLink>
+                    </li>
+                </>
+            )}
         </ul>
     </nav>
 );
 
-// Header.propTypes = {
-//     items: PropTypes.arrayOf(PropTypes.string).isRequired,
-// };
+NavBar.propTypes = {
+    auth: PropTypes.bool.isRequired,
+};
 
 export default NavBar;

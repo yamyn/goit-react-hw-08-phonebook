@@ -8,6 +8,10 @@ import {
     signupStart,
     signupSuccess,
     signupError,
+    logout,
+    refreshUserStart,
+    refreshUserSuccess,
+    refreshUserError,
 } from './sessionAction';
 
 export const login = credentials => dispatch => {
@@ -29,10 +33,26 @@ export const signup = credentials => dispatch => {
 };
 
 export const logOut = () => (dispatch, getState) => {
+    dispatch(logout());
     const token = getToken(getState());
     if (!token) {
         return;
     }
+
+    fetch.post('/users/logout', setAuthToken(token));
+};
+
+export const refreshUser = () => (dispatch, getState) => {
+    dispatch(refreshUserStart());
+    const token = getToken(getState());
+    if (!token) {
+        return;
+    }
+
+    fetch
+        .get('/users/current', setAuthToken(token))
+        .then(response => dispatch(refreshUserSuccess(response.data)))
+        .catch(error => dispatch(refreshUserError(error)));
 };
 
 // export const deleteContacts = id => dispatch => {

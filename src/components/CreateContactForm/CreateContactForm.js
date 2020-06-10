@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { form, button } from './CreateContactForm.module.css';
+import Form from '../shared/Form/Form';
+import Input from '../shared/Input/Input';
+import Button from '../shared/Button/Button';
 
 export default class CreateContactForm extends Component {
     static propTypes = {
@@ -32,33 +34,26 @@ export default class CreateContactForm extends Component {
         const { name, number } = this.state;
 
         return (
-            <form onSubmit={this.handleSubmit} className={form}>
-                <div>
-                    <label htmlFor="name_input">Name</label>
-                    <input
-                        type="text"
-                        placeholder="Enter contact`s name"
-                        value={name}
-                        onChange={this.handleChange}
-                        name="name"
-                        id="name_input"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="number_input">Number</label>
-                    <input
-                        type="number"
-                        placeholder="Enter contact`s name"
-                        value={number}
-                        onChange={this.handleChange}
-                        name="number"
-                        id="number_input"
-                    />
-                </div>
-                <button className={button} type="submit">
-                    Add contact
-                </button>
-            </form>
+            <Form onSubmit={this.handleSubmit}>
+                <Input
+                    title="Name"
+                    handleChange={this.handleChange}
+                    name="name"
+                    holder="Enter contact`s name"
+                    id="name_input"
+                    value={name}
+                />
+                <Input
+                    title="Number"
+                    handleChange={this.handleChange}
+                    type="number"
+                    name="number"
+                    holder="Enter contact`s number"
+                    id="number_input"
+                    value={number}
+                />
+                <Button title="Add contact" />
+            </Form>
         );
     }
 }

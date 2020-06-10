@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { form, button } from './SignupForm.module.css';
+import Form from '../shared/Form/Form';
+import Input from '../shared/Input/Input';
+import Button from '../shared/Button/Button';
 
 export default class SignupForm extends Component {
     static propTypes = {
@@ -34,44 +36,35 @@ export default class SignupForm extends Component {
         const { name, email, password } = this.state;
 
         return (
-            <form onSubmit={this.handleSubmit} className={form}>
-                <div>
-                    <label htmlFor="name_input">Name</label>
-                    <input
-                        type="text"
-                        placeholder="Enter your name"
-                        value={name}
-                        onChange={this.handleChange}
-                        name="name"
-                        id="name_input"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email_input">Email</label>
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={this.handleChange}
-                        name="email"
-                        id="email_input"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password_input">Password</label>
-                    <input
-                        type="password"
-                        placeholder="Enter your password"
-                        value={password}
-                        onChange={this.handleChange}
-                        name="password"
-                        id="password_input"
-                    />
-                </div>
-                <button className={button} type="submit">
-                    Sign Up
-                </button>
-            </form>
+            <Form onSubmit={this.handleSubmit}>
+                <Input
+                    title="Name"
+                    handleChange={this.handleChange}
+                    name="name"
+                    holder="Enter your name"
+                    id="name_input"
+                    value={name}
+                />
+                <Input
+                    title="Email"
+                    handleChange={this.handleChange}
+                    type="email"
+                    name="email"
+                    holder="Enter your email"
+                    id="email_input"
+                    value={email}
+                />
+                <Input
+                    title="Password"
+                    handleChange={this.handleChange}
+                    type="password"
+                    name="password"
+                    holder="Enter your password"
+                    id="password_input"
+                    value={password}
+                />
+                <Button title="Sign Up" />
+            </Form>
         );
     }
 }

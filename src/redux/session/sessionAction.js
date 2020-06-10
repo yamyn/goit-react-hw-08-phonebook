@@ -35,3 +35,16 @@ export const signupError = createAction('SIGNUP/ERROR', error => ({
     payload: { message: error.message },
     meta: { error: true },
 }));
+
+export const refreshUserStart = createAction('REFRESHUSER/START');
+
+export const refreshUserSuccess = createAction('REFRESHUSER/SUCCESS', user => ({
+    payload: { user },
+}));
+
+export const refreshUserError = createAction('REFRESHUSER/ERROR', error => ({
+    payload: { message: error.message },
+    meta: { error: true },
+}));
+
+export const logout = createAction('LOGOUT');

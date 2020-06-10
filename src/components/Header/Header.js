@@ -7,14 +7,25 @@ import UserProfile from '../UserProfile/UserProfile';
 
 const Header = ({ user, authenticated, onLogOut }) => (
     <header className={header}>
-        <NavBar />
+        <NavBar auth={authenticated} />
         {authenticated && <UserProfile user={user} onLogOut={onLogOut} />}
     </header>
 );
-// Section.propTypes = {
-//     title: PropTypes.string.isRequired,
 
-//     children: PropTypes.node.isRequired,
-// };
+Header.defaultProps = {
+    user: PropTypes.shape({
+        name: 'name',
+        email: 'email',
+    }),
+};
+
+Header.propTypes = {
+    user: PropTypes.shape({
+        name: PropTypes.string,
+        email: PropTypes.string,
+    }),
+    authenticated: PropTypes.bool.isRequired,
+    onLogOut: PropTypes.func.isRequired,
+};
 
 export default Header;

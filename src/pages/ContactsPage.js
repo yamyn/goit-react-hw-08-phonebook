@@ -5,14 +5,15 @@ import { connect } from 'react-redux';
 
 import { getContactsLength } from '../redux/contacts/contactsSelectors';
 
-import Section from '../components/Section/Section';
+import Section from '../components/shared/Section/Section';
 import ContactsList from '../components/ContactsList/ContatctsListContainer';
 import Filter from '../components/Filter/FilterContainer';
+
 import CreateContactForm from '../components/CreateContactForm/CreateContactFormContainer';
 
 import popTransition from '../transitions/pop.module.css';
 
-const Home = count => {
+const Home = ({ count }) => {
     return (
         <>
             <Section title="">
@@ -33,6 +34,10 @@ const Home = count => {
             </Section>
         </>
     );
+};
+
+Home.propTypes = {
+    count: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({

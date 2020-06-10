@@ -1,7 +1,8 @@
 import React from 'react';
 
-import Section from '../components/Section/Section';
+import Section from '../components/shared/Section/Section';
 import LoginForm from '../components/LoginForm/LoginFormContainer';
+import withAuthRedirect from '../components/hoc/withAuthRedirect';
 
 const LoginPage = () => (
     <Section title="">
@@ -9,4 +10,4 @@ const LoginPage = () => (
     </Section>
 );
 
-export default LoginPage;
+export default withAuthRedirect(LoginPage);

@@ -8,16 +8,19 @@ import slideTittleTransition from '../../transitions/slide-500ms.module.css';
 import popTransition from '../../transitions/pop.module.css';
 
 // Pages
-import HomePage from '../../pages/ContactsPage';
+import ContactsPage from '../../pages/ContactsPage';
+import HomePage from '../../pages/HomePage';
 import LoginPage from '../../pages/LoginPage';
 import SignUpPage from '../../pages/SignupPage';
 
+import ProtectedRoute from '../ProtectedRoute';
 import Header from '../Header/HeaderContainer';
 import Alert from '../Alert/Alert';
 
 export default class App extends Component {
     static propTypes = {
         alert: PropTypes.string.isRequired,
+        refreshUser: PropTypes.func.isRequired,
     };
 
     state = {
@@ -25,6 +28,9 @@ export default class App extends Component {
     };
 
     componentDidMount() {
+        const { refreshUser } = this.props;
+        refreshUser();
+
         this.setState({
             addTittle: true,
         });
@@ -47,6 +53,11 @@ export default class App extends Component {
                 </CSSTransition>
                 <Header />
                 <Switch>
+                    <ProtectedRoute
+                        path="/contacts"
+                        component={ContactsPage}
+                        redirectTo="/login"
+                    />
                     <Route exact path="/" component={HomePage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={SignUpPage} />

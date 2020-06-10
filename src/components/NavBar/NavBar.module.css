@@ -1,16 +1,20 @@
 .navigation {
-    flex: 0 0 40%;
+    flex: 0 0 50%;
 }
 
 .list {
     padding: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     font-size: 24px;
 }
 
 .item {
     list-style: none;
+}
+
+.item:not(:first-child) {
+    padding-left: 15px;
 }
 
 .link {
